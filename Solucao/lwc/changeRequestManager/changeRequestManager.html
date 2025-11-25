@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Gerenciamento de Solicitações de Alteração">
+        <div class="container">
+            <div class="list">
+                <c-change-request-approval-list
+                    onrequestselected={handleRequestSelected}
+                ></c-change-request-approval-list>
+            </div>
+
+            <div class="detail">
+                <template if:true={selectedRequestId}>
+                    <c-change-request-detail
+                        record-id={selectedRequestId}
+                        onactioncompleted={handleActionCompleted}
+                    ></c-change-request-detail>
+                </template>
+
+                <template if:false={selectedRequestId}>
+                    <div class="placeholder">
+                        <p>Selecione uma solicitação na lista para visualizar os detalhes.</p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

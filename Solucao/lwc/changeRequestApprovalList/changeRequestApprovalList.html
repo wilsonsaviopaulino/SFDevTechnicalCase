@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Solicitações Pendentes">
+        <div class="slds-p-around_medium">
+            <template if:true={requests}>
+                <lightning-datatable
+                    data={requests}
+                    columns={columns}
+                    key-field="Id"
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column
+                >
+                </lightning-datatable>
+            </template>
+
+            <template if:true={isEmpty}>
+                <div class="slds-text-body_regular slds-m-top_small">Nenhuma solicitação pendente.</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

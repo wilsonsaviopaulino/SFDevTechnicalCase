@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Detalhe da Solicitação">
+        <div class="slds-p-around_medium">
+            <template if:true={request}>
+                <div class="slds-m-bottom_small"><b>Aluno:</b> {request.studentName}</div>
+                <div class="slds-m-bottom_small"><b>Tipo:</b> {request.Request_Type__c}</div>
+                <div class="slds-m-bottom_small"><b>Valor atual:</b> {request.Old_Value__c}</div>
+                <div class="slds-m-bottom_small"><b>Novo valor:</b> {renderedNewValue}</div>
+
+                <lightning-textarea label="Motivo (opcional)" value={reason} onchange={handleReasonChange}></lightning-textarea>
+
+                <div class="slds-m-top_medium">
+                    <lightning-button variant="brand" label="Aprovar" onclick={handleApprove} class="slds-m-right_small"></lightning-button>
+                    <lightning-button variant="destructive" label="Rejeitar" onclick={handleReject}></lightning-button>
+                </div>
+            </template>
+
+            <template if:false={request}>
+                <div>Selecione uma solicitação para ver detalhes.</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
